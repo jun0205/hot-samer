@@ -14,9 +14,9 @@ from lib.base_httphandler import BaseHandler
 USER = pwd.getpwuid(os.getuid())[0]
 if USER == 'liutaihua':
     # for my private secret
-    from same_spider.secret_liutaihua import header
+    from spider.secret_liutaihua import header
 else:
-    from same_spider.secret import header
+    from spider.secret import header
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -26,7 +26,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 class NotFoundPage(BaseHandler):
     def get(self):
-        return self.finish("美女全跑光了(此频道20点后开放), 没找到任何东西...")
+        return self.finish("美女全跑光了, 没找到任何东西...")
 
 
 class SortSensesHandler(tornado.web.RequestHandler):
@@ -63,8 +63,6 @@ class LetterResultIndex(BaseHandler):
 class TestIndex(BaseHandler):
     def get(self):
         return self.render('index-test.html')
-
-
 
 class HotSamerHandler(BaseHandler):
     @gen.coroutine
